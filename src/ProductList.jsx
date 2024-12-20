@@ -258,6 +258,16 @@ const ProductList = () => {
         textDecoration: 'none',
     };
 
+    useEffect(() => {
+        const newAddedToCart = {};
+
+        cart.forEach((item) => {
+            newAddedToCart[item.name] = true;
+        });
+
+        setAddedToCart(newAddedToCart);
+    }, [cart]);
+
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
