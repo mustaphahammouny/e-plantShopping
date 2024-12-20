@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css';
 import CartItem from './CartItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 
 const ProductList = () => {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
+    const cart = useSelector((state) => state.cart.items);
     const dispatch = useDispatch();
 
     const plantsArray = [
@@ -339,6 +340,15 @@ const ProductList = () => {
                                         strokeWidth="2"
                                         id="mainIconPathAttribute"
                                     ></path>
+                                    <text
+                                        x="128"
+                                        y="120"
+                                        fill="#ffffff"
+                                        textAnchor="middle"
+                                        dominantBaseline="middle"
+                                    >
+                                        {cart.length}
+                                    </text>
                                 </svg>
                             </h1>
                         </a>
